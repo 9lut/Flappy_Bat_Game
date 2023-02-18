@@ -3,7 +3,7 @@ from kivy.uix.widget import Widget
 from kivy.properties import ObjectProperty
 from kivy.uix.image import Image
 from kivy.core.window import Window
-
+from kivy.clock import Clock 
 
 class Background(Widget):
     floor_texture = ObjectProperty(None)
@@ -15,10 +15,18 @@ class Background(Widget):
         self.floor_texture.wrap = 'repeat'
         self.floor_texture.uvsize = (Window.width / self.floor_texture.width, -1)
 
+    def on_size(self, *args):
+        self.floor_texture.uvsize = (self.width / self.floor_texture.width, -1)
+
+    def scroll_textures(self, time_passed):
+        self.floor_texture.uvpos = ( (self.floor_texture.uvpos[0] - time_passed)%Window.width, self.floor_texture.uvpos[1])
+
+        texture = self.property('floor_texture')
+        texture.dispatch(self)
     
 class MainApp(App):
     def on_start(self):
-        self.root.ids.background
+        Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/60.)
     pass
 
 
