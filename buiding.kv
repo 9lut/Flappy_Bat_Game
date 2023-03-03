@@ -1,8 +1,8 @@
 <Buiding>:
     bottom_body_position: self.pos[1]
-    bottom_head_position: self.buid_center - self.GAP_SIZE/2.0 - self.head_SIZE
+    bottom_head_position: self.buid_center - self.GAP_SIZE/2.0 - self.Head_SIZE
     top_head_position: self.buid_center + self.GAP_SIZE/2.0
-    top_body_position: self.buid_center + self.GAP_SIZE/2.0 + self.head_SIZE
+    top_body_position: self.buid_center + self.GAP_SIZE/2.0 + self.Head_SIZE
 
     canvas.before:
         Rectangle:
@@ -13,15 +13,15 @@
             tex_coords: self.lower_buid_tex_coords
         Rectangle:
             # Bottom buid head
-            size: 75, self.head_SIZE
+            size: 75, self.Head_SIZE
             pos: self.pos[0], self.bottom_head_position
-            source: "buid_head.png"
+            source: "head.png"
 
         Rectangle:
             # Top buid head
-            size: 75, self.head_SIZE
+            size: 75, self.Head_SIZE
             pos: self.pos[0], self.top_head_position
-            source: "buid_head.png"
+            source: "head.png"
         Rectangle:
             size: 60, self.top - self.top_body_position
             pos: self.pos[0] + (75-60)/2.0, self.top_body_position
