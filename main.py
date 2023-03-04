@@ -48,6 +48,12 @@ class MainApp(App):
     def on_start(self):
         Clock.schedule_interval(self.root.ids.background.scroll_textures, 1/60.)
     
+    def move_bat(self, time_passed):
+        bat = self.root.ids.bat
+        bat.y = bat.y + bat.velocity * time_passed
+        bat.velocity = bat.velocity - self.GRAVITY * time_passed
+        self.check_collision()
+    
     def start_game(self):
         Clock.schedule_interval(self.move_bird, 1/60.)
 
@@ -77,4 +83,4 @@ class MainApp(App):
             most_left_buid = self.buids[buid_xs.index(min(buid_xs))]
             most_left_buid.x = Window.width
 
-MainApp().run()
+MainApp().run() 
