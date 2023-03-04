@@ -97,7 +97,7 @@ class MainApp(App):
         self.frames = Clock.schedule_interval(self.next_frame, 1/60.)
 
         num_buids = 5 
-        distance_between_buids = Window.width / (num_buids - 1)
+        distance_between_buids = Window.width / (num_buids - 1.7)
         for i in range(num_buids):
             buid = Buiding()
             buid.buid_center = randint(96 + 100, self.root.height - 100)
