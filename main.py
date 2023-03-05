@@ -4,6 +4,7 @@ from kivy.properties import ObjectProperty
 from kivy.uix.image import Image
 from kivy.core.window import Window
 from kivy.clock import Clock 
+from kivy.core.audio import SoundLoader
 
 from buiding import Buiding
 
@@ -90,6 +91,9 @@ class MainApp(App):
         self.root.ids.background.scroll_textures(time_passed)
 
     def start_game(self):
+        self.sound = SoundLoader.load("song.mp3")
+        self.sound.play()
+        
         self.root.ids.score.text = "0"
         self.was_colliding = False
         self.buids = []
